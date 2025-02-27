@@ -8,8 +8,8 @@
   <style>
     #compass-img {
       position: fixed;
-      bottom: calc(50% - 49px);
-      left: calc(50% - 49px);
+      bottom: calc(50% - 50px);
+      left: calc(50% - 50px);
       width: 100px;
       height: 100px;
       z-index: 1000; /* Ensure it is on top of other elements */
@@ -195,8 +195,8 @@
           color: 'red',
           side: 'double'
         });
-        arc150_330.setAttribute('rotation', '0 60 90');
-        // arc150_330.setAttribute('bevel-enabled', true);
+        arc150_330.setAttribute('rotation', '0 150 90');
+        arc150_330.setAttribute('position', '0 1.65 0');
 
         // Create the northtext
         var northText = document.createElement('a-text');
@@ -237,48 +237,13 @@
         this.el.appendChild(arcNS);
         this.el.appendChild(arc30_210);
         this.el.appendChild(arc60_240);
+        this.el.appendChild(arcEW);
         this.el.appendChild(arc120_300);
         this.el.appendChild(arc150_330);
-        this.el.appendChild(arcEW);
         this.el.appendChild(northText);
         this.el.appendChild(southText);
         this.el.appendChild(eastText);
         this.el.appendChild(westText);
-
-        const radius = 5;
-        const step = 1
-        for (let angle = 0; angle <= 180; angle += step) {
-          const rad = angle * (Math.PI / 180);
-          const y = radius * Math.sin(rad);
-          const z = radius * Math.cos(rad);
-          if(y > 1.8) {
-            // const lineNS = document.createElement('a-entity');
-            // lineNS.setAttribute('geometry', {
-            //   primitive: 'cylinder',
-            //   height: 0.1,
-            //   radius: 0.02
-            // });
-            // lineNS.setAttribute('material', {
-            //   color: 'red'
-            // });
-            // lineNS.setAttribute('position', `0 ${y} ${-z}`);
-            // lineNS.setAttribute('rotation', `${angle} 0 0`);
-            // this.el.appendChild(lineNS);
-
-            // const lineEW = document.createElement('a-entity');
-            // lineEW.setAttribute('geometry', {
-            //   primitive: 'cylinder',
-            //   height: 0.1,
-            //   radius: 0.02
-            // });
-            // lineEW.setAttribute('material', {
-            //   color: 'blue'
-            // });
-            // lineEW.setAttribute('position', `${z-0.5} ${y}`);
-            // lineEW.setAttribute('rotation', `0 0 ${angle}`);
-            // this.el.appendChild(lineEW);
-          }
-        }
       }
     });
   </script>
@@ -288,7 +253,7 @@
   <a-camera id="camera" position="0 1.6 0"></a-camera>
   <a-entity id="ring-text" ring-text></a-entity>
 </a-scene>
-<img id="compass-img" src="compass.png" alt="Compass">
+<img id="compass-img" src="public/compass.png" alt="Compass">
 
 </body>
 <script>
